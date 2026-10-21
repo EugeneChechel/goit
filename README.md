@@ -2,12 +2,17 @@
 
 Python exercises for the **Master of Science: Artificial Intelligence and Machine Learning** course from [GoIT](https://goit.global/).
 
-Each homework is a small, self-contained script. The early assignments practice the language itself — dates, randomness, strings, and functions — before later work moves into data analysis and machine learning.
+Each homework is a small, self-contained script. The assignments practice the language itself — functions, files, and command-line tools — before later work moves into data analysis and machine learning.
 
 ## Requirements
 
 - Python 3.10 or newer
-- No third-party packages. The exercises use only the standard library (`datetime`, `random`, `re`)
+- Homework 3 uses only the standard library (`datetime`, `random`, `re`)
+- Homework 4 uses the standard library (`pathlib`) plus [colorama](https://pypi.org/project/colorama/) for the directory tree:
+
+```bash
+pip install colorama
+```
 
 ## Layout
 
@@ -15,6 +20,7 @@ Homework is grouped by GoIT module. A directory name follows the assignment id: 
 
 ```text
 goit-pycore-hw-03/    Python Core, homework 3
+goit-pycore-hw-04/    Python Core, homework 4
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -42,3 +48,37 @@ python3 goit-pycore-hw-03/get_numbers_ticket.py
 python3 goit-pycore-hw-03/normalize_phone.py
 python3 goit-pycore-hw-03/get_upcoming_birthdays.py
 ```
+
+## Python Core — Homework 4
+
+Practice with text files, recursion over a directory, and a small command-line assistant. Sample data lives in `goit-pycore-hw-04/files/`: `info` holds `name,salary` rows, and `cats` holds `id,name,age` rows.
+
+| Script | Function | What it does |
+| --- | --- | --- |
+| `total_salary.py` | `total_salary(path)` | Reads a salary file and returns the total and the average. A missing file or a bad row prints an error and returns `(0, 0)`. |
+| `get_cats_info.py` | `get_cats_info(path)` | Reads a cat file and returns a list of dictionaries with `id`, `name`, and `age`. A missing file or a bad row prints an error and returns an empty list. |
+| `directory_tree.py` | `print_directory_tree(path)` | Prints a directory recursively. Directories are blue, files are green, and errors are red. Pass the directory path as the only command-line argument. |
+| `assistant_bot.py` | `main()` | An in-memory contact bot. It keeps running until you exit. |
+
+`total_salary.py` and `get_cats_info.py` open `./files/...`, so run them from inside `goit-pycore-hw-04`.
+
+### Run
+
+```bash
+cd goit-pycore-hw-04
+python3 total_salary.py
+python3 get_cats_info.py
+python3 directory_tree.py files
+python3 assistant_bot.py
+```
+
+### Assistant commands
+
+| Command | Effect |
+| --- | --- |
+| `hello` | Greeting |
+| `add <name> <phone>` | Save a contact |
+| `change <name> <phone>` | Replace a saved number |
+| `phone <name>` | Print one number |
+| `all` | Print every contact |
+| `close` or `exit` | Quit |
