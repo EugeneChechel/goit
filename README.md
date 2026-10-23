@@ -7,8 +7,8 @@ Each homework is a small, self-contained script. The assignments practice the la
 ## Requirements
 
 - Python 3.10 or newer
-- Homework 3 uses only the standard library (`datetime`, `random`, `re`)
-- Homework 4 uses the standard library (`pathlib`) plus [colorama](https://pypi.org/project/colorama/) for the directory tree:
+- Homework 3 and homework 5 use only the standard library
+- Homework 4 also needs [colorama](https://pypi.org/project/colorama/) for the directory tree:
 
 ```bash
 pip install colorama
@@ -21,6 +21,7 @@ Homework is grouped by GoIT module. A directory name follows the assignment id: 
 ```text
 goit-pycore-hw-03/    Python Core, homework 3
 goit-pycore-hw-04/    Python Core, homework 4
+goit-pycore-hw-05/    Python Core, homework 5
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -82,3 +83,39 @@ python3 assistant_bot.py
 | `phone <name>` | Print one number |
 | `all` | Print every contact |
 | `close` or `exit` | Quit |
+
+## Python Core — Homework 5
+
+Practice with generators, closures, decorators, and parsing a log file. Sample log lines live in `goit-pycore-hw-05/logs` as `date time LEVEL message`.
+
+| Script | Function | What it does |
+| --- | --- | --- |
+| `generator_numbers.py` | `generator_numbers(text)` | Yields every decimal number in a text that is separated by spaces. `sum_profit(text, func)` totals those numbers through the generator you pass in. |
+| `caching_fibonacci.py` | `caching_fibonacci()` | Returns a Fibonacci function that stores results it has already computed. `n <= 0` is 0 and `n == 1` is 1. |
+| `console_bot.py` | `main()` | The contact bot from homework 4, with an `input_error` decorator. A bad command answers in text instead of raising. |
+| `logs.py` | `load_logs(file_path)` | Reads a log file, prints a count for `INFO`, `DEBUG`, `ERROR`, and `WARNING`, and, when you pass a level, prints the matching lines. |
+
+`generator_numbers.py` and `caching_fibonacci.py` print a sample when you run them. `logs.py` takes the log path as its first argument and an optional level as its second. Run `console_bot.py` and `logs.py` from inside `goit-pycore-hw-05` if you use the sample file `logs`.
+
+### Run
+
+```bash
+python3 goit-pycore-hw-05/generator_numbers.py
+python3 goit-pycore-hw-05/caching_fibonacci.py
+
+cd goit-pycore-hw-05
+python3 console_bot.py
+python3 logs.py logs
+python3 logs.py logs error
+```
+
+### Console bot
+
+Commands match homework 4: `hello`, `add <name> <phone>`, `change <name> <phone>`, `phone <name>`, `all`, `close`, and `exit`.
+
+| Mistake | Reply |
+| --- | --- |
+| `add` or `change` without both a name and a phone | `Give me name and phone please.` |
+| Unknown name for `change` or `phone` | `Contact not found.` |
+| `phone` with no name | `Enter user name.` |
+| Empty input | `Enter the argument for the command` |
