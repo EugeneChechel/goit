@@ -2,12 +2,12 @@
 
 Python exercises for the **Master of Science: Artificial Intelligence and Machine Learning** course from [GoIT](https://goit.global/).
 
-Each homework is a small, self-contained script. The assignments practice the language itself — functions, files, and command-line tools — before later work moves into data analysis and machine learning.
+Each homework is a small, self-contained script. The assignments practice the language itself — functions, files, command-line tools, and classes — before later work moves into data analysis and machine learning.
 
 ## Requirements
 
 - Python 3.10 or newer
-- Homework 3 and homework 5 use only the standard library
+- Homework 3, homework 5, and homework 6 use only the standard library
 - Homework 4 also needs [colorama](https://pypi.org/project/colorama/) for the directory tree:
 
 ```bash
@@ -22,6 +22,7 @@ Homework is grouped by GoIT module. A directory name follows the assignment id: 
 goit-pycore-hw-03/    Python Core, homework 3
 goit-pycore-hw-04/    Python Core, homework 4
 goit-pycore-hw-05/    Python Core, homework 5
+goit-pycore-hw-06/    Python Core, homework 6
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -119,3 +120,27 @@ Commands match homework 4: `hello`, `add <name> <phone>`, `change <name> <phone>
 | Unknown name for `change` or `phone` | `Contact not found.` |
 | `phone` with no name | `Enter user name.` |
 | Empty input | `Enter the argument for the command` |
+
+## Python Core — Homework 6
+
+An address book for the contact assistant, written with classes. Contacts are not wired into the command loop yet. `AddressBook` is a `UserDict` keyed by name.
+
+| Class | What it does |
+| --- | --- |
+| `Field` | Base field. Stores `value` and prints it. |
+| `Name` | Required contact name. An empty name raises `ValueError`. |
+| `Phone` | Phone number. It must be a string of exactly 10 digits, or `Phone` raises `ValueError`. |
+| `Record` | One contact: a `Name` and a list of `Phone` objects. `add_phone`, `remove_phone`, `edit_phone`, and `find_phone`. |
+| `AddressBook` | `add_record`, `find`, and `delete`. |
+
+`find` and `find_phone` return `None` when nothing matches. Removing or editing a missing phone raises `ValueError`. Deleting a missing contact raises `KeyError`.
+
+Running the file adds John and Jane, edits John's first number, prints the phone that was found, and deletes Jane.
+
+### Run
+
+From the repository root:
+
+```bash
+python3 goit-pycore-hw-06/address_book.py
+```
