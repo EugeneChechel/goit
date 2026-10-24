@@ -7,7 +7,7 @@ Each homework is a small, self-contained script. The assignments practice the la
 ## Requirements
 
 - Python 3.10 or newer
-- Homework 3, homework 5, and homework 6 use only the standard library
+- Homework 3, homework 5, homework 6, and homework 7 use only the standard library
 - Homework 4 also needs [colorama](https://pypi.org/project/colorama/) for the directory tree:
 
 ```bash
@@ -23,6 +23,7 @@ goit-pycore-hw-03/    Python Core, homework 3
 goit-pycore-hw-04/    Python Core, homework 4
 goit-pycore-hw-05/    Python Core, homework 5
 goit-pycore-hw-06/    Python Core, homework 6
+goit-pycore-hw-07/    Python Core, homework 7
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -144,3 +145,49 @@ From the repository root:
 ```bash
 python3 goit-pycore-hw-06/address_book.py
 ```
+
+## Python Core — Homework 7
+
+The contact assistant now stores people in the homework 6 address book and can keep one birthday per contact. `address_book.py` holds the classes. `console_bot.py` is the command loop.
+
+| Class | What it does |
+| --- | --- |
+| `Birthday` | A date in `DD.MM.YYYY`, stored as `datetime`. Any other value raises `ValueError` with `Invalid date format. Use DD.MM.YYYY`. |
+| `Record` | Same contact as homework 6, plus an optional `birthday`. `add_birthday` sets that single date. |
+| `AddressBook` | `get_upcoming_birthdays` lists contacts to congratulate over the next 7 days, including today. A Saturday birthday moves to the next Monday, and a Sunday birthday moves to Monday. |
+
+`Phone` still requires exactly 10 digits. A bad number is rejected before a new contact is saved.
+
+### Run
+
+```bash
+python3 goit-pycore-hw-07/console_bot.py
+```
+
+### Commands
+
+| Command | Effect |
+| --- | --- |
+| `add <name> <phone>` | Create a contact, or add another phone to one that already exists |
+| `change <name> <old phone> <new phone>` | Replace one phone |
+| `phone <name>` | Show every phone for that contact |
+| `all` | Show every contact, including a birthday when one is set |
+| `add-birthday <name> <DD.MM.YYYY>` | Set that contact's birthday |
+| `show-birthday <name>` | Show the birthday |
+| `birthdays` | Show congratulations for the next 7 days |
+| `hello` | Greeting |
+| `close` or `exit` | Quit |
+
+A bad command answers in text, and the bot keeps running.
+
+| Mistake | Reply |
+| --- | --- |
+| `add` without both a name and a phone | `Give me name and phone please.` |
+| Phone is not 10 digits | `Phone number must contain exactly 10 digits.` |
+| `change` without a name, old phone, and new phone | `Give me name, old phone and new phone please.` |
+| Old phone is not on the contact | `Phone not found.` |
+| Unknown contact | `Contact not found.` |
+| `phone` or `show-birthday` with no name | `Enter user name.` |
+| `add-birthday` without a name and a date | `Give me name and birthday please.` |
+| Date is not `DD.MM.YYYY` | `Invalid date format. Use DD.MM.YYYY` |
+| Empty input | `Enter the argument for the command` |
