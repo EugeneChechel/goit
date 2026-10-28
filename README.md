@@ -7,7 +7,7 @@ Each homework is a small, self-contained script. The assignments practice the la
 ## Requirements
 
 - Python 3.10 or newer
-- Homework 3, homework 5, homework 6, and homework 7 use only the standard library
+- Homework 3 and homeworks 5–8 use only the standard library
 - Homework 4 also needs [colorama](https://pypi.org/project/colorama/) for the directory tree:
 
 ```bash
@@ -24,6 +24,7 @@ goit-pycore-hw-04/    Python Core, homework 4
 goit-pycore-hw-05/    Python Core, homework 5
 goit-pycore-hw-06/    Python Core, homework 6
 goit-pycore-hw-07/    Python Core, homework 7
+goit-pycore-hw-08/    Python Core, homework 8
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -191,3 +192,18 @@ A bad command answers in text, and the bot keeps running.
 | `add-birthday` without a name and a date | `Give me name and birthday please.` |
 | Date is not `DD.MM.YYYY` | `Invalid date format. Use DD.MM.YYYY` |
 | Empty input | `Enter the argument for the command` |
+
+## Python Core — Homework 8
+
+The same assistant as homework 7, with the address book saved between runs. `address_book.py` holds the classes. `serialization.py` is the command loop.
+
+`load_data` reads `addressbook.pkl` with `pickle` when the bot starts. A missing file starts an empty book. `save_data` writes the book before the program leaves, including `close`, `exit`, and the end of input. The next launch restores the same contacts, phones, and birthdays.
+
+Commands and error replies match homework 7. The pickle file is created in the current working directory, so run the bot from inside `goit-pycore-hw-08`.
+
+### Run
+
+```bash
+cd goit-pycore-hw-08
+python3 serialization.py
+```
