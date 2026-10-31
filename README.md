@@ -7,7 +7,7 @@ Each homework is a small, self-contained script. The assignments practice the la
 ## Requirements
 
 - Python 3.10 or newer
-- Homework 3 and homeworks 5–8 use only the standard library
+- Homework 3, homeworks 5–8, and the final project use only the standard library
 - Homework 4 also needs [colorama](https://pypi.org/project/colorama/) for the directory tree:
 
 ```bash
@@ -25,6 +25,7 @@ goit-pycore-hw-05/    Python Core, homework 5
 goit-pycore-hw-06/    Python Core, homework 6
 goit-pycore-hw-07/    Python Core, homework 7
 goit-pycore-hw-08/    Python Core, homework 8
+goit-pycore-final/    Python Core, final project
 ```
 
 Docstrings in the source are in Ukrainian, the language of the course.
@@ -207,3 +208,33 @@ Commands and error replies match homework 7. The pickle file is created in the c
 cd goit-pycore-hw-08
 python3 serialization.py
 ```
+
+## Python Core — Final project
+
+A CLI **Personal Assistant** built on the address book from homeworks 6–8. Contacts gain address and email. Notes are stored separately. Everything is saved with `pickle` under `~/.personal_assistant/assistant.pkl`, so a restart keeps your data.
+
+| File | Role |
+| --- | --- |
+| `models.py` | Fields, `Record`, `AddressBook`, `Note`, `Notebook`, `PersonalAssistant` |
+| `storage.py` | Load and save the assistant in the home directory |
+| `assistant.py` | Command loop |
+
+### Contacts
+
+- Name, phones (10 digits), email, address, birthday (`DD.MM.YYYY`)
+- Add, search, edit, delete
+- `birthdays <days>` lists contacts to congratulate within that many days (weekend birthdays move to Monday)
+
+### Notes
+
+- Add, search, edit, delete text notes
+- Optional tags: `add-note-tags`, `search-notes-tag`, `sort-notes-by-tag`
+
+### Run
+
+```bash
+cd goit-pycore-final
+python3 assistant.py
+```
+
+Type `help` inside the bot for the full command list.

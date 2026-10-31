@@ -2,3 +2,4 @@
 .idea
 run.py
 __pycache__
+*.pkl
