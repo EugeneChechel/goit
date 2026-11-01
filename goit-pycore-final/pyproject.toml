@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personal-assistant"
+version = "1.0.0"
+description = "CLI Personal Assistant for contacts and notes (GoIT Python Core final project)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "GoIT student" },
+]
+dependencies = []
+
+[project.scripts]
+personal-assistant = "personal_assistant.assistant:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["personal_assistant*"]

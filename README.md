@@ -213,11 +213,14 @@ python3 serialization.py
 
 A CLI **Personal Assistant** built on the address book from homeworks 6–8. Contacts gain address and email. Notes are stored separately. Everything is saved with `pickle` under `~/.personal_assistant/assistant.pkl`, so a restart keeps your data.
 
-| File | Role |
+The project is an installable Python package. After `pip install`, the `personal-assistant` command works from any directory.
+
+| Path | Role |
 | --- | --- |
-| `models.py` | Fields, `Record`, `AddressBook`, `Note`, `Notebook`, `PersonalAssistant` |
-| `storage.py` | Load and save the assistant in the home directory |
-| `assistant.py` | Command loop |
+| `personal_assistant/models.py` | Fields, `Record`, `AddressBook`, `Note`, `Notebook`, `PersonalAssistant` |
+| `personal_assistant/storage.py` | Load and save the assistant in the home directory |
+| `personal_assistant/assistant.py` | Command loop (`main` entry point) |
+| `pyproject.toml` | Package metadata and console script |
 
 ### Contacts
 
@@ -230,11 +233,25 @@ A CLI **Personal Assistant** built on the address book from homeworks 6–8. Con
 - Add, search, edit, delete text notes
 - Optional tags: `add-note-tags`, `search-notes-tag`, `sort-notes-by-tag`
 
-### Run
+### Install and run
 
 ```bash
 cd goit-pycore-final
-python3 assistant.py
+pip install .
+personal-assistant
 ```
 
-Type `help` inside the bot for the full command list.
+Editable install while you change the code:
+
+```bash
+pip install -e .
+```
+
+Without installing:
+
+```bash
+cd goit-pycore-final
+python3 -m personal_assistant
+```
+
+Type `help` inside the bot for the full command list. More detail is in `goit-pycore-final/README.md`.

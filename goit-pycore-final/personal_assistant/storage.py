@@ -5,7 +5,7 @@ from __future__ import annotations
 import pickle
 from pathlib import Path
 
-from models import PersonalAssistant
+from personal_assistant.models import PersonalAssistant
 
 DATA_DIR = Path.home() / ".personal_assistant"
 DATA_FILE = DATA_DIR / "assistant.pkl"

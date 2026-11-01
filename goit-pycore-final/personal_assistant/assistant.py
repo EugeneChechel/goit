@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from functools import wraps
 
-from models import PersonalAssistant, Record
-from storage import load_data, save_data
+from personal_assistant.models import PersonalAssistant, Record
+from personal_assistant.storage import load_data, save_data
 
 
 HELP_TEXT = """
