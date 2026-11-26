@@ -26,6 +26,6 @@ def get_days_from_today(date: str) -> int | None:
         print("Помилка: неправильний формат дати. Використовуйте формат 'YYYY-MM-DD'.")
         return None
 
-print(get_days_from_today("2021-10-09"))
+print(get_days_from_today("2022-10-09"))
 print(get_days_from_today("2020-10-09"))
 print(get_days_from_today("invalid-date"))
